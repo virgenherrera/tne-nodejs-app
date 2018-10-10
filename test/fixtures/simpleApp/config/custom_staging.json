@@ -1,0 +1,6 @@
+{
+    "env_k1": "value 1",
+    "env_K2": "value 2",
+    "linkedValue1": "$keys.keys_k1",
+    "linkedValue2": "$keys.keys_K2"
+}
