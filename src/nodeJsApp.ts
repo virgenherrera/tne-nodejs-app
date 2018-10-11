@@ -8,8 +8,8 @@ export class NodeJsApp {
 	public settings: any = null;
 	public getConfig: (path: string, defaultValue?: any) => any = (path, defaultValue) => getConfig(this.settings, path, defaultValue);
 
-	constructor(settings: any) {
-		this.settings = new AppSettings(settings);
+	constructor(settings: any, defaultSettings: any = null) {
+		this.settings = new AppSettings(settings, defaultSettings);
 
 		const fileConfig: ILogFileConfig = {
 			logsPath: getConfig(this.settings, 'logsPath'),
@@ -19,6 +19,7 @@ export class NodeJsApp {
 		this._logger = new TneLogger({ fileConfig, customTransports });
 
 		bindExceptionHandler(
+			getConfig(this.settings, 'appName'),
 			getConfig(this.settings, 'fatalErrHandler'),
 			this.logger
 		);

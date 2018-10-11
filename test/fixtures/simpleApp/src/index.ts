@@ -10,3 +10,19 @@ export const customAppConf = {
 	appPath,
 	environment: 'custom_staging'
 };
+
+
+export const appAdditionalData = {
+	appName: 'expressCoreApp',
+	locals: 'null1',
+	port: 3000,
+	environment: 'development',
+	viewsConfig: 'null2',
+	bodyParser: 'null3',
+	preRouteHooks: [],
+	publicFolder: 'null4',
+	faviconPath: 'null5',
+	routesFolder: 'null6',
+	errorHandler: 'notFound',
+	httpsOptions: new Date().toISOString(),
+};

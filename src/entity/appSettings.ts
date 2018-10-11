@@ -3,9 +3,9 @@ import * as lib from '../lib/settingParser';
 export class AppSettings {
 	[key: string]: any;
 
-	constructor(args: any) {
+	constructor(args: any, defaultSettings: any = null) {
 		// step 0 parse args get Env and appName
-		const settings = lib.parseArgs(args);
+		const settings = lib.parseArgs(args, defaultSettings);
 		const environment = lib.setEnv(settings.environment);
 		const appName = lib.setAppName(settings.appName);
 

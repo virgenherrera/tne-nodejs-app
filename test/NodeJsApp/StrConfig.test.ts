@@ -2,7 +2,7 @@ import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
 import { pathExists, fileExists } from '@tne/common';
 import { NodeJsApp } from '../../src/nodeJsApp';
-import { appPath } from '../fixtures/simpleApp/src';
+import { appPath, appAdditionalData } from '../fixtures/simpleApp/src';
 
 should();
 describe('@tne/express-core-app construct with string argument', () => {
@@ -40,6 +40,18 @@ describe('@tne/express-core-app construct with string argument', () => {
 		nodeApp = new NodeJsApp(appPath);
 
 		expect(fileExists(nodeApp.logFilePath)).to.be.equal(true);
+	});
+
+	it('should bundle additional data to settings object', () => {
+		nodeApp = new NodeJsApp(appPath, appAdditionalData);
+
+		expect(nodeApp.settings).to.be.an('object');
+
+		Object.keys(appAdditionalData).forEach(key => {
+			expect(nodeApp.settings).to.have.property(key);
+			expect(nodeApp.settings[key]).to.be.equals(appAdditionalData[key]);
+			expect(nodeApp.getConfig(key)).to.be.equal(appAdditionalData[key]);
+		});
 	});
 });
 
