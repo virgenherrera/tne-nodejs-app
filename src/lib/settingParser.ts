@@ -3,14 +3,19 @@ import { join } from 'path';
 import { Defaults } from '../constant/defaults';
 import { appThrowable } from './appThrowable';
 
-export function parseArgs(args: any): any {
+export function parseArgs(args: any, defaultSettings: any = null): any {
 	let res;
+
 	if (typeof args === 'string') {
 		res = { appPath: args };
 	} else if (typeof args === 'object' && !Array.isArray(args)) {
 		res = { ...args };
 	} else {
 		appThrowable('invalidConstructorArgs', null);
+	}
+
+	if (defaultSettings) {
+		res = Object.assign({}, defaultSettings, res);
 	}
 
 	return res;
