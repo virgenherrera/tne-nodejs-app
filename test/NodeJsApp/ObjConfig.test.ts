@@ -1,7 +1,7 @@
 import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
-import { pathExists, fileExists } from '@tne/common';
-import { NodeJsApp } from '../../src/nodeJsApp';
+import { pathExists } from '@tne/common';
+import { NodeJsApp } from '../../src/';
 import { appPath, simpleAppObjConf, appAdditionalData } from '../fixtures/simpleApp/src';
 
 should();
@@ -37,9 +37,9 @@ describe('@tne/express-core-app construct with Object argument', () => {
 	});
 
 	it('"logsPath" file must be created when instance was created', () => {
-		nodeApp = new NodeJsApp(simpleAppObjConf);
+		const { logsPath } = new NodeJsApp(simpleAppObjConf);
 
-		expect(fileExists(nodeApp.logFilePath)).to.be.equal(true);
+		expect(pathExists(logsPath)).to.be.equal(true);
 	});
 
 	it('should bundle additional data to settings object', () => {

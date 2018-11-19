@@ -1,6 +1,6 @@
 import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
-import { NodeJsApp } from '../../src/nodeJsApp';
+import { NodeJsApp } from '../../src/';
 import { badAppPath, badAppObjConf } from '../fixtures/simpleApp/src';
 import { appPath as badEnvJsonAppPath } from '../fixtures/badEnvJson/src';
 import { appPath as badKeysJsonAppPath } from '../fixtures/badKeysApp/src';
