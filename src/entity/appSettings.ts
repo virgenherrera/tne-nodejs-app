@@ -29,6 +29,5 @@ export class AppSettings {
 
 		// Step 7 freeze AppSettings
 		Object.freeze(this);
-		Object.freeze(this['prototype']);
 	}
 }

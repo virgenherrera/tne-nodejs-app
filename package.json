@@ -1,7 +1,7 @@
 {
   "name": "@tne/nodejs-app",
   "description": "TNE - NodeJs base application",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "license": "MIT",
   "preferGlobal": true,
   "main": "dist/index.js",
@@ -35,25 +35,20 @@
     "test": "nyc mocha",
     "prepublish": "npm run build",
     "build": "npm run cleanup && npm run test && npm run tsc",
-    "cleanup": "npm run clean:dist && npm run clean:nyc_output && npm run clean:coverage",
-    "clean:dist": "rimraf dist",
-    "clean:nyc_output": "rimraf .nyc_output",
-    "clean:coverage": "rimraf coverage",
+    "cleanup": "rimraf dist .nyc_output coverage",
     "tslint": "./node_modules/.bin/tslint -c ./tslint.json -p ./tsconfig.json",
     "tsc": "./node_modules/.bin/tsc",
     "tsc:watch": "./node_modules/.bin/tsc -w --sourceMap"
   },
   "dependencies": {
     "@tne/common": "^1.0.0",
-    "@tne/logger": "^1.1.2",
-    "stacktrace-js": "^2.0.0"
+    "@tne/logger": "^1.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.5",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.8",
     "@types/rimraf": "^2.0.2",
-    "@types/stacktrace-js": "0.0.32",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",

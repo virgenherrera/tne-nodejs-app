@@ -2,8 +2,8 @@ import * as rimraf from 'rimraf';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { expect, should } from 'chai';
-import { pathExists, fileExists } from '@tne/common';
-import { NodeJsApp } from '../../src/nodeJsApp';
+import { pathExists } from '@tne/common';
+import { NodeJsApp } from '../../src/';
 import { simpleAppObjConf } from '../fixtures/simpleApp/src';
 
 should();
@@ -42,12 +42,6 @@ describe('@tne/express-core-app Custom ENV app settings', () => {
 		nodeApp = new NodeJsApp(simpleAppObjConf);
 
 		expect(pathExists(nodeApp.logsPath)).to.be.equal(true);
-	});
-
-	it('"logsPath" file must be created when instance was created', () => {
-		nodeApp = new NodeJsApp(simpleAppObjConf);
-
-		expect(fileExists(nodeApp.logFilePath)).to.be.equal(true);
 	});
 
 	it('should return keys.json file data', () => {

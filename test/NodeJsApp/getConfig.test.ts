@@ -1,6 +1,6 @@
 import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
-import { NodeJsApp } from '../../src/nodeJsApp';
+import { NodeJsApp } from '../../src/';
 import { simpleAppObjConf } from '../fixtures/simpleApp/src';
 import { readFileSync } from 'fs';
 import { join } from 'path';
