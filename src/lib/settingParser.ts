@@ -6,7 +6,7 @@ import { IAppSettings } from '../interfaces';
 import { ISettings as ILogSets, IFileSettings } from '@tne/logger';
 import { getConfig } from './getConfig';
 
-export function parseArgs(args: IAppSettings, defaultSettings: any = null): any {
+export function parseArgs(args: IAppSettings | string, defaultSettings: any = null): any {
 	let res;
 
 	if (typeof args === 'string') {

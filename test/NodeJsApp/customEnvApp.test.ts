@@ -18,6 +18,37 @@ describe('@tne/express-core-app Custom ENV app settings', () => {
 		expect(nodeApp).to.be.an('object').that.has.keys('_logger', 'settings', 'getConfig');
 	});
 
+	it('NodeJsApp instance should have basic props with default props', () => {
+		const appDefaults = {
+			k1: 'v1',
+			k2: 'v2',
+			k3: 'v3',
+			k4: 'v4',
+			k5: 'v5',
+			k6: 'v6',
+			k7: 'v7',
+		};
+		nodeApp = new NodeJsApp(customAppConf, appDefaults);
+
+		expect(nodeApp).to.be.an('object').that.has.keys('_logger', 'settings', 'getConfig');
+
+		Object.keys(appDefaults).forEach(key => {
+			expect(nodeApp.getConfig(key)).to.be.equal(appDefaults[key]);
+		});
+	});
+
+	it('NodeJsApp instance should receive logger props', () => {
+		const appDefaults = {
+			logger: {
+				level: 'warn',
+				customTransports: [],
+			},
+		};
+		nodeApp = new NodeJsApp(customAppConf, appDefaults);
+
+		expect(nodeApp).to.be.an('object').that.has.keys('_logger', 'settings', 'getConfig');
+	});
+
 	it('NodeJsApp instance should have getters', () => {
 		nodeApp = new NodeJsApp(customAppConf);
 

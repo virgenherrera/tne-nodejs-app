@@ -9,7 +9,7 @@ export class NodeJsApp {
 	public settings: any = null;
 	public getConfig: (path: string, defaultValue?: any) => any = (path, defaultValue) => getConfig(this.settings, path, defaultValue);
 
-	constructor(settings: IAppSettings, defaultSettings: any = null) {
+	constructor(settings: IAppSettings | string, defaultSettings: any = null) {
 		this.settings = new AppSettings(settings, defaultSettings);
 		this._logger = initLogger(this.getConfig);
 	}
