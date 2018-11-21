@@ -1,9 +1,10 @@
 import * as lib from '../lib/settingParser';
+import { IAppSettings } from '../interfaces';
 
 export class AppSettings {
 	[key: string]: any;
 
-	constructor(args: any, defaultSettings: any = null) {
+	constructor(args: IAppSettings, defaultSettings: any = null) {
 		// step 0 parse args get Env and appName
 		const settings = lib.parseArgs(args, defaultSettings);
 		const environment = lib.setEnv(settings.environment);
@@ -21,11 +22,11 @@ export class AppSettings {
 		// step 4 ensure configPath/keys.json file exists and is a valid json
 		const keys = lib.getJsonFileKeysData(configPath);
 
-		// step 5 declare logsPath
-		const logsPath = lib.setLogsPath(appPath, settings.logsPath || config.logsPath);
+		// step 5 parseLogger Config
+		const logger = lib.setLoggerCfg(settings);
 
 		// step 6 bundle settings
-		Object.assign(this, settings, { environment, appName, appPath, configPath, logsPath }, config, { keys });
+		Object.assign(this, settings, { environment, appName, appPath, configPath, logger }, config, { keys });
 
 		// Step 7 freeze AppSettings
 		Object.freeze(this);
