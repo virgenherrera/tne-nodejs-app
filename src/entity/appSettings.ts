@@ -4,7 +4,7 @@ import { IAppSettings } from '../interfaces';
 export class AppSettings {
 	[key: string]: any;
 
-	constructor(args: IAppSettings, defaultSettings: any = null) {
+	constructor(args: IAppSettings | string, defaultSettings: any = null) {
 		// step 0 parse args get Env and appName
 		const settings = lib.parseArgs(args, defaultSettings);
 		const environment = lib.setEnv(settings.environment);
