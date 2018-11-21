@@ -23,7 +23,7 @@ describe('@tne/express-core-app on construct', () => {
 			undefined
 		];
 
-		badArgumentList.forEach(arg => expect(() => new NodeJsApp(arg)).to.throw());
+		badArgumentList.forEach((arg: any) => expect(() => new NodeJsApp(arg)).to.throw());
 	});
 
 	it('should throw then appPath does not lead to a valid path', () => {

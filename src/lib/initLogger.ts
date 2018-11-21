@@ -12,9 +12,15 @@ export function initLogger(getConfig: Function): TneLogger {
 		},
 	};
 
-	if (format) { settings.format = format; }
-	if (level) { settings.level = level; }
-	if (customTransports) { settings.customTransports = customTransports; }
+	if (format) {
+		settings.format = format;
+	}
+	if (level) {
+		settings.level = level;
+	}
+	if (customTransports) {
+		settings.customTransports = customTransports;
+	}
 
 	return new TneLogger(settings);
 }
