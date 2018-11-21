@@ -1,7 +1,7 @@
 {
   "name": "@tne/nodejs-app",
   "description": "TNE - NodeJs base application",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "preferGlobal": true,
   "main": "dist/index.js",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@tne/common": "^1.0.0",
-    "@tne/logger": "^1.2.0"
+    "@tne/logger": "^1.2.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.5",
