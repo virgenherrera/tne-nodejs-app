@@ -33,11 +33,15 @@ describe('@tne/express-core-app on construct', () => {
 	});
 
 	it('should throw if ../config/[NODE_ENV].json file is not a valid JSON', () => {
+		process.env.NODE_ENV = 'fake_env';
 		expect(() => new NodeJsApp(badEnvJsonAppPath)).to.throw();
+		process.env.NODE_ENV = 'test';
 	});
 
 	it('should throw if ../config/keys.json file is not a valid JSON', () => {
+		process.env.NODE_ENV = 'fake_env';
 		expect(() => new NodeJsApp(badKeysJsonAppPath)).to.throw();
+		process.env.NODE_ENV = 'test';
 	});
 });
 

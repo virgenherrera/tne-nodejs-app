@@ -24,18 +24,6 @@ export function parseArgs(args: IAppSettings | string, defaultSettings: any = nu
 	return res;
 }
 
-export function setEnv(environment: string = null): string {
-	const { NODE_ENV } = process.env;
-
-	if (environment && typeof environment === 'string') {
-		return environment;
-	} else if (NODE_ENV && ['null', 'undefined'].indexOf(NODE_ENV) === -1) {
-		return NODE_ENV;
-	} else {
-		return Defaults.environment;
-	}
-}
-
 export function setAppName(appName: string = null): string {
 	return (appName) ? toCamelCase(appName) : Defaults.appName;
 }
