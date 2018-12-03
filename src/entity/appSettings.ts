@@ -7,7 +7,7 @@ export class AppSettings {
 	constructor(args: IAppSettings | string, defaultSettings: any = null) {
 		// step 0 parse args get Env and appName
 		const settings = lib.parseArgs(args, defaultSettings);
-		const environment = lib.setEnv(settings.environment);
+		const environment = process.env.NODE_ENV;
 		const appName = lib.setAppName(settings.appName);
 
 		// step 1 ensure appPath was provided and leads to valid path
