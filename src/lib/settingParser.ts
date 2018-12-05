@@ -23,6 +23,11 @@ export function parseArgs(args: IAppSettings | string, defaultSettings: any = nu
 
 	return res;
 }
+export function getAppEnv(): string {
+	const { NODE_ENV = Defaults.environment } = process.env;
+
+	return NODE_ENV;
+}
 
 export function setAppName(appName: string = null): string {
 	return (appName) ? toCamelCase(appName) : Defaults.appName;
