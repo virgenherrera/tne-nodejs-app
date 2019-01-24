@@ -1,16 +1,20 @@
-import * as rimraf from 'rimraf';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { expect, should } from 'chai';
 import { pathExists } from '@tne/common';
 import { NodeJsApp } from '../../src/';
 import { customAppConf } from '../fixtures/simpleApp/src';
+import { dropLogs } from '../helpers';
 
 should();
 describe('@tne/express-core-app Custom ENV app settings', () => {
 	let nodeApp: NodeJsApp = null;
 
-	afterEach((done) => (!nodeApp) ? done() : rimraf(nodeApp.logsPath, () => done()));
+	after(() => {
+		return (nodeApp)
+			? dropLogs(nodeApp.logsPath)
+			: null;
+	});
 
 	it('NodeJsApp instance should have basic props', () => {
 		nodeApp = new NodeJsApp(customAppConf);

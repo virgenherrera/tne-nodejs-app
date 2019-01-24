@@ -1,15 +1,19 @@
-import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
 import { NodeJsApp } from '../../src/';
 import { simpleAppObjConf } from '../fixtures/simpleApp/src';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { dropLogs } from '../helpers';
 
 should();
 describe('@tne/express-core-app getConfig() Method', () => {
 	let nodeApp: NodeJsApp = null;
 
-	afterEach((done) => (!nodeApp) ? done() : rimraf(nodeApp.logsPath, () => done()));
+	after(() => {
+		return (nodeApp)
+			? dropLogs(nodeApp.logsPath)
+			: null;
+	});
 
 	it('should return keys.json file data', () => {
 		const keysJsonData = JSON.parse(`${readFileSync(join(__dirname, '../fixtures/simpleApp/config/keys.json'), 'utf8')}`);

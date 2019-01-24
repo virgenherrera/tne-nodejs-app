@@ -1,15 +1,19 @@
-import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
 import { NodeJsApp } from '../../src/';
 import { badAppPath, badAppObjConf } from '../fixtures/simpleApp/src';
 import { appPath as badEnvJsonAppPath } from '../fixtures/badEnvJson/src';
 import { appPath as badKeysJsonAppPath } from '../fixtures/badKeysApp/src';
+import { dropLogs } from '../helpers';
 
 should();
 describe('@tne/express-core-app on construct', () => {
 	const nodeApp: NodeJsApp = null;
 
-	afterEach((done) => (!nodeApp) ? done() : rimraf(nodeApp.logsPath, () => done()));
+	after(() => {
+		return (nodeApp)
+			? dropLogs(nodeApp.logsPath)
+			: null;
+	});
 
 	it('should throw with bad constructor arguments', () => {
 		const badArgumentList = [
