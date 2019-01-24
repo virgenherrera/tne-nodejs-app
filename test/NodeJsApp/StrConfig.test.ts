@@ -1,14 +1,18 @@
-import * as rimraf from 'rimraf';
 import { expect, should } from 'chai';
 import { pathExists } from '@tne/common';
 import { NodeJsApp } from '../../src/';
 import { appPath, appAdditionalData } from '../fixtures/simpleApp/src';
+import { dropLogs } from '../helpers';
 
 should();
 describe('@tne/express-core-app construct with string argument', () => {
 	let nodeApp: NodeJsApp = null;
 
-	afterEach((done) => (!nodeApp) ? done() : rimraf(nodeApp.logsPath, () => done()));
+	after(() => {
+		return (nodeApp)
+			? dropLogs(nodeApp.logsPath)
+			: null;
+	});
 
 	it('NodeJsApp instance should have basic props', () => {
 		nodeApp = new NodeJsApp(appPath);
